@@ -1,108 +1,209 @@
-# 🚁 Teste Prático DTI — Simulador de Entregas com Drones
+# 🛰️ Teste Prático DTI – Simulador de Entregas com Drones
 
-```plaintext
+Este projeto simula a operação de drones urbanos para entrega de pedidos, conforme proposto no Desafio Técnico da DTI.  
+Foi desenvolvido com **Node.js + Express** no backend e um **frontend simples** para testes diretos, sem necessidade de Postman.
+
+---
+
+## ⚡ 1. Funcionalidades Principais
+
+- 📝 **Criação de pedidos** com coordenadas, peso e prioridade  
+- 📦 **Fila de entregas priorizada** (Alta → Média → Baixa)  
+- 🚁 **Alocação automática** de pedidos em drones disponíveis  
+- ⏱️ **Cálculo de tempo de entrega** com base na distância  
+- 📊 **Métricas de desempenho** (tempo médio e total de entregas)  
+- 🌐 **Frontend completo** e testes unitários com Jest
+
+---
+
+## 🧰 2. Tecnologias Utilizadas
+
+| Camada        | Tecnologias                       |
+|--------------|------------------------------------|
+| Backend      | Node.js, Express                   |
+| Frontend     | HTML + JS simples (sem frameworks) |
+| Testes       | Jest                              |
+| Simulação    | Fila com prioridade + loop 2s     |
+
+---
+
+## 🧭 3. Como Executar o Projeto
+
+### 📌 Pré-requisitos
+
+- [Node.js](https://nodejs.org/) (v16 ou superior)  
+- npm (já vem incluso com Node)
+
+### 📥 Instalação
+
+```bash
+npm install
+🚀 Executar o servidor
+bash
+Copiar código
+npm run dev
+Acesse no navegador:
+👉 http://localhost:3000
+
+Você verá a interface para criar pedidos, acompanhar drones, métricas e logs.
+
+🧪 4. Executar Testes Unitários
+O projeto contém testes unitários com Jest, cobrindo as principais regras de negócio:
+
+🧠 calcTempoEntrega → cálculo de distância/tempo
+
+📋 filaPrioridade → ordenação correta da fila
+
+🚁 droneCapacidade → rejeição de pedidos acima da capacidade
+
+Rodar testes
+bash
+Copiar código
+npm test
+Saída esperada ✅
+bash
+Copiar código
+ PASS  tests/calcTempo.test.js
+ PASS  tests/filaPrioridade.test.js
+ PASS  tests/droneCapacidade.test.js
+
+Test Suites: 3 passed, 3 total
+Tests:       5 passed, 5 total
+📝 5. Regras de Negócio e Cálculos
+📍 Coordenadas e Distância
+Cada pedido possui coordenadas (x, y) no plano cartesiano.
+
+A base dos drones fica em (0, 0).
+
+A distância é calculada com Pitágoras:
+
+𝐷
+𝑖
+𝑠
+𝑡
+𝑎
+^
+𝑛
+𝑐
+𝑖
+𝑎
+=
+𝑥
+2
++
+𝑦
+2
+Dist 
+a
+^
+ ncia= 
+x 
+2
+ +y 
+2
+ 
+​
+ 
+Exemplo:
+Pedido em (3,4) → Distância = √(3² + 4²) = 5 unidades
+
+⏱️ Tempo de Entrega
+Tempo estimado = distância arredondada para cima (Math.ceil)
+
+A simulação roda acelerada (500 ms por entrega) para fins de teste.
+
+📦 Fila de Pedidos
+Prioridades:
+
+Prioridade	Valor
+Alta	1
+Média	2
+Baixa	3
+
+A fila é ordenada por prioridade e depois FIFO (ordem de chegada).
+Exemplo:
+[ Alta #1, Alta #2, Média #1, Baixa #1 ]
+
+🚁 Drones
+Dois drones simulados:
+
+Drone	Capacidade	Alcance
+drone-1	10 kg	30 u.
+drone-2	8 kg	25 u.
+
+Regras:
+
+Drone pega sempre o próximo pedido da fila
+
+Se peso > capacidade → rejeitado
+
+Se distância > alcance → rejeitado
+
+Cada drone processa 1 pedido por vez
+
+📊 Métricas
+Endpoint:
+
+http
+Copiar código
+GET /metricas
+Resposta exemplo:
+
+json
+Copiar código
+{
+  "entregasRealizadas": 3,
+  "tempoMedioEntregaMinutos": 14.67
+}
+Inclui:
+
+Total de entregas concluídas ✅
+
+Tempo médio de entrega
+
+🌐 6. Frontend
+Localizado em public/ — permite uso direto via navegador.
+
+Funcionalidades:
+
+📍 Formulário para criar pedidos unitários
+
+📋 Campo para criar pedidos em lote (JSON)
+
+🗺️ Mapa com base, pedidos e drones
+
+📊 Painel de métricas e log de ações
+
+Acesse:
+👉 http://localhost:3000
+
+🧱 7. Estrutura de Pastas
+csharp
+Copiar código
 Teste_Pratico_DTI/
+├── public/              # Frontend
 ├── src/
 │   ├── controllers/
 │   ├── models/
 │   ├── routes/
 │   ├── services/
-│   ├── utils/
-│   │   └── calcTempo.js
-│   └── app.js
-├── public/              # Frontend (interface visual)
-│   └── index.html
-├── tests/               # Testes unitários
-│   ├── calcTempo.test.js
-│   ├── droneCapacidade.test.js
-│   └── filaPrioridade.test.js
-├── jest.config.js
+│   └── utils/
+├── tests/               # Testes unitários (Jest)
 ├── package.json
 └── README.md
-🛠️ Requisitos
-plaintext
-Copiar código
-- Node.js ≥ 16
-- npm ≥ 8
-⚡ Instalação
-bash
-Copiar código
-cd Teste_Pratico_DTI
-npm install
-▶️ Executar o Servidor
-bash
-Copiar código
-npm run dev
-plaintext
-Copiar código
-Servidor: http://localhost:3000
-🌐 Interface Web (Frontend)
-plaintext
-Copiar código
-- Criar múltiplos pedidos de uma vez
-- Atribuir prioridade a cada entrega
-- Visualizar fila e entregas realizadas
-- Ver métricas em tempo real (tempo médio, total de entregas, drones ativos)
-📡 Endpoints Principais (API REST)
-http
-Copiar código
-POST /api/pedidos
-json
-Copiar código
-{
-  "id": "pedido-1",
-  "peso": 5,
-  "prioridade": 2,
-  "destino": { "x": 3, "y": 4 }
-}
-http
-Copiar código
-GET /api/pedidos
-GET /api/metricas
-🧮 Cálculos Importantes
-plaintext
-Copiar código
-Tempo de entrega = ceil( sqrt(x² + y²) )
+🏆 8. Diferenciais Implementados
+✅ Fila de pedidos com prioridade real
+✅ Simulação automática de entregas
+✅ Métricas em tempo real
+✅ Frontend amigável
+✅ Testes unitários com Jest
+✅ Código modular e organizado
 
-Exemplo: destino (3,4)
-distância = 5
-tempoEntrega = 5 minutos
-plaintext
-Copiar código
-Bateria:
-- Se peso do pedido > capacidade do drone → rejeita
-- Se tempoEntrega > autonomia do drone → rejeita
-plaintext
-Copiar código
-Número de viagens:
-- Cada drone faz 1 entrega por vez.
-- Após concluir, ele pega o próximo pedido da fila de prioridade.
-🧪 Testes Unitários
-json
-Copiar código
-"scripts": {
-  "test": "set NODE_OPTIONS=--experimental-vm-modules && jest"
-}
-bash
-Copiar código
-npm test
-plaintext
-Copiar código
-Testes cobrem:
-- calcTempoEntrega (cálculo de tempo)
-- Regras de capacidade dos drones
-- Ordenação por prioridade da fila
-📝 Tecnologias Utilizadas
-plaintext
-Copiar código
-- Node.js + Express — Backend
-- HTML/CSS/JS — Frontend simples
-- Jest — Testes unitários
-- ES Modules — Import/export modernos
-🧠 Possíveis Melhorias Futuras
-plaintext
-Copiar código
-- Controle mais elaborado de bateria e recarga
-- Múltiplas bases de operação
-- Interface mais avançada com mapas reais
-- Dockerfile para deploy rápido
+📌 9. Possíveis Extensões Futuras
+🔋 Simulação real de bateria e recarga de drones
+
+📦 Agrupamento de pedidos (bin packing)
+
+🛰️ Visualização animada dos drones no mapa
+
+🧠 Algoritmos avançados de alocação
