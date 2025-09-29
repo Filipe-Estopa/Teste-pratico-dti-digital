@@ -38,72 +38,57 @@ Foi desenvolvido com **Node.js + Express** no backend e um **frontend simples** 
 
 ```bash
 npm install
-🚀 Executar o servidor
-bash
-Copiar código
+
+## Executar o servidor
+'''bash
 npm run dev
+
 Acesse no navegador:
 👉 http://localhost:3000
 
 Você verá a interface para criar pedidos, acompanhar drones, métricas e logs.
 
-🧪 4. Executar Testes Unitários
+---
+
+## 4. Executar Testes Unitários
+
 O projeto contém testes unitários com Jest, cobrindo as principais regras de negócio:
 
-🧠 calcTempoEntrega → cálculo de distância/tempo
+. calcTempoEntrega → cálculo de distância/tempo
 
-📋 filaPrioridade → ordenação correta da fila
+. filaPrioridade → ordenação correta da fila
 
-🚁 droneCapacidade → rejeição de pedidos acima da capacidade
+. droneCapacidade → rejeição de pedidos acima da capacidade
 
-Rodar testes
-bash
-Copiar código
+### Rodar testes
+
+'''bash
 npm test
-Saída esperada ✅
-bash
-Copiar código
+
+###Saída esperada
+
+'''bash
  PASS  tests/calcTempo.test.js
  PASS  tests/filaPrioridade.test.js
  PASS  tests/droneCapacidade.test.js
 
 Test Suites: 3 passed, 3 total
 Tests:       5 passed, 5 total
-📝 5. Regras de Negócio e Cálculos
-📍 Coordenadas e Distância
+
+---
+
+## 5. Regras de Negócio e Cálculos
+
+### Coordenadas e Distância
+
 Cada pedido possui coordenadas (x, y) no plano cartesiano.
 
 A base dos drones fica em (0, 0).
 
 A distância é calculada com Pitágoras:
 
-𝐷
-𝑖
-𝑠
-𝑡
-𝑎
-^
-𝑛
-𝑐
-𝑖
-𝑎
-=
-𝑥
-2
-+
-𝑦
-2
-Dist 
-a
-^
- ncia= 
-x 
-2
- +y 
-2
- 
-​
- 
+<img width="231" height="63" alt="image" src="https://github.com/user-attachments/assets/7893f4fe-c4b5-41a9-bb6c-79951c16e96f" />
+
 Exemplo:
 Pedido em (3,4) → Distância = √(3² + 4²) = 5 unidades
 
@@ -112,7 +97,8 @@ Tempo estimado = distância arredondada para cima (Math.ceil)
 
 A simulação roda acelerada (500 ms por entrega) para fins de teste.
 
-📦 Fila de Pedidos
+### Fila de Pedidos
+
 Prioridades:
 
 Prioridade	Valor
@@ -124,14 +110,15 @@ A fila é ordenada por prioridade e depois FIFO (ordem de chegada).
 Exemplo:
 [ Alta #1, Alta #2, Média #1, Baixa #1 ]
 
-🚁 Drones
+### Drones
+
 Dois drones simulados:
 
 Drone	Capacidade	Alcance
 drone-1	10 kg	30 u.
 drone-2	8 kg	25 u.
 
-Regras:
+### Regras:
 
 Drone pega sempre o próximo pedido da fila
 
@@ -141,7 +128,8 @@ Se distância > alcance → rejeitado
 
 Cada drone processa 1 pedido por vez
 
-📊 Métricas
+## Métricas
+
 Endpoint:
 
 http
@@ -161,23 +149,27 @@ Total de entregas concluídas ✅
 
 Tempo médio de entrega
 
-🌐 6. Frontend
+---
+
+## 6. Frontend
+
 Localizado em public/ — permite uso direto via navegador.
 
-Funcionalidades:
+### Funcionalidades:
 
-📍 Formulário para criar pedidos unitários
+ Formulário para criar pedidos unitários
 
-📋 Campo para criar pedidos em lote (JSON)
+ Campo para criar pedidos em lote (JSON)
 
-🗺️ Mapa com base, pedidos e drones
+ Mapa com base, pedidos e drones
 
-📊 Painel de métricas e log de ações
+ Painel de métricas e log de ações
 
 Acesse:
-👉 http://localhost:3000
+ http://localhost:3000
 
-🧱 7. Estrutura de Pastas
+ 7. Estrutura de Pastas
+
 csharp
 Copiar código
 Teste_Pratico_DTI/
@@ -191,7 +183,10 @@ Teste_Pratico_DTI/
 ├── tests/               # Testes unitários (Jest)
 ├── package.json
 └── README.md
-🏆 8. Diferenciais Implementados
+---
+
+## 8. Diferenciais Implementados
+
 ✅ Fila de pedidos com prioridade real
 ✅ Simulação automática de entregas
 ✅ Métricas em tempo real
@@ -199,11 +194,3 @@ Teste_Pratico_DTI/
 ✅ Testes unitários com Jest
 ✅ Código modular e organizado
 
-📌 9. Possíveis Extensões Futuras
-🔋 Simulação real de bateria e recarga de drones
-
-📦 Agrupamento de pedidos (bin packing)
-
-🛰️ Visualização animada dos drones no mapa
-
-🧠 Algoritmos avançados de alocação
