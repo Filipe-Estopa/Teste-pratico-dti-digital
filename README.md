@@ -5,18 +5,18 @@ Foi desenvolvido com **Node.js + Express** no backend e um **frontend simples** 
 
 ---
 
-## ⚡ 1. Funcionalidades Principais
+##  1. Funcionalidades Principais
 
-- 📝 **Criação de pedidos** com coordenadas, peso e prioridade  
-- 📦 **Fila de entregas priorizada** (Alta → Média → Baixa)  
-- 🚁 **Alocação automática** de pedidos em drones disponíveis  
-- ⏱️ **Cálculo de tempo de entrega** com base na distância  
-- 📊 **Métricas de desempenho** (tempo médio e total de entregas)  
-- 🌐 **Frontend completo** e testes unitários com Jest
+-  **Criação de pedidos** com coordenadas, peso e prioridade  
+-  **Fila de entregas priorizada** (Alta → Média → Baixa)  
+-  **Alocação automática** de pedidos em drones disponíveis  
+-  **Cálculo de tempo de entrega** com base na distância  
+-  **Métricas de desempenho** (tempo médio e total de entregas)  
+-  **Frontend completo** e testes unitários com Jest
 
 ---
 
-## 🧰 2. Tecnologias Utilizadas
+##  2. Tecnologias Utilizadas
 
 | Camada        | Tecnologias                       |
 |--------------|------------------------------------|
@@ -27,14 +27,14 @@ Foi desenvolvido com **Node.js + Express** no backend e um **frontend simples** 
 
 ---
 
-## 🧭 3. Como Executar o Projeto
+##  3. Como Executar o Projeto
 
-### 📌 Pré-requisitos
+###  Pré-requisitos
 
 - [Node.js](https://nodejs.org/) (v16 ou superior)  
 - npm (já vem incluso com Node)
 
-### 📥 Instalação
+###  Instalação
 
 ```bash
 npm install
@@ -47,7 +47,7 @@ npm run dev
 ```
 
 Acesse no navegador:
-👉 http://localhost:3000
+ http://localhost:3000
 
 Você verá a interface para criar pedidos, acompanhar drones, métricas e logs.
 
@@ -138,8 +138,6 @@ Cada drone processa 1 pedido por vez
 Endpoint:
 
 ```bash
-http
-Copiar código
 GET /metricas
 ```
 
