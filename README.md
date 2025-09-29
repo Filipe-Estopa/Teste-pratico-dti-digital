@@ -1,4 +1,4 @@
-# 🛰️ Teste Prático DTI – Simulador de Entregas com Drones
+#  Teste Prático DTI – Simulador de Entregas com Drones
 
 Este projeto simula a operação de drones urbanos para entrega de pedidos, conforme proposto no Desafio Técnico da DTI.  
 Foi desenvolvido com **Node.js + Express** no backend e um **frontend simples** para testes diretos, sem necessidade de Postman.
