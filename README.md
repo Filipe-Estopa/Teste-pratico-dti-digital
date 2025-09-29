@@ -42,6 +42,7 @@ npm install
 ## Executar o servidor
 '''bash
 npm run dev
+'''
 
 Acesse no navegador:
 👉 http://localhost:3000
@@ -64,6 +65,7 @@ O projeto contém testes unitários com Jest, cobrindo as principais regras de n
 
 '''bash
 npm test
+'''
 
 ###Saída esperada
 
@@ -74,6 +76,7 @@ npm test
 
 Test Suites: 3 passed, 3 total
 Tests:       5 passed, 5 total
+'''
 
 ---
 
@@ -132,18 +135,22 @@ Cada drone processa 1 pedido por vez
 
 Endpoint:
 
+'''bash
 http
 Copiar código
 GET /metricas
-Resposta exemplo:
+'''
 
-json
-Copiar código
+###Resposta exemplo:
+
+'''bash
 {
   "entregasRealizadas": 3,
   "tempoMedioEntregaMinutos": 14.67
 }
-Inclui:
+'''
+
+###Inclui:
 
 Total de entregas concluídas ✅
 
@@ -170,8 +177,7 @@ Acesse:
 
  7. Estrutura de Pastas
 
-csharp
-Copiar código
+'''bash
 Teste_Pratico_DTI/
 ├── public/              # Frontend
 ├── src/
@@ -183,6 +189,8 @@ Teste_Pratico_DTI/
 ├── tests/               # Testes unitários (Jest)
 ├── package.json
 └── README.md
+'''
+
 ---
 
 ## 8. Diferenciais Implementados
