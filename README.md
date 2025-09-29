@@ -38,11 +38,13 @@ Foi desenvolvido com **Node.js + Express** no backend e um **frontend simples** 
 
 ```bash
 npm install
+```
 
 ## Executar o servidor
-'''bash
+
+```bash
 npm run dev
-'''
+```
 
 Acesse no navegador:
 👉 http://localhost:3000
@@ -63,20 +65,20 @@ O projeto contém testes unitários com Jest, cobrindo as principais regras de n
 
 ### Rodar testes
 
-'''bash
+```bash
 npm test
-'''
+```
 
 ###Saída esperada
 
-'''bash
+```bash
  PASS  tests/calcTempo.test.js
  PASS  tests/filaPrioridade.test.js
  PASS  tests/droneCapacidade.test.js
 
 Test Suites: 3 passed, 3 total
 Tests:       5 passed, 5 total
-'''
+```
 
 ---
 
@@ -135,20 +137,20 @@ Cada drone processa 1 pedido por vez
 
 Endpoint:
 
-'''bash
+```bash
 http
 Copiar código
 GET /metricas
-'''
+```
 
 ###Resposta exemplo:
 
-'''bash
+```bash
 {
   "entregasRealizadas": 3,
   "tempoMedioEntregaMinutos": 14.67
 }
-'''
+```
 
 ###Inclui:
 
@@ -177,7 +179,7 @@ Acesse:
 
  7. Estrutura de Pastas
 
-'''bash
+```bash
 Teste_Pratico_DTI/
 ├── public/              # Frontend
 ├── src/
@@ -189,7 +191,7 @@ Teste_Pratico_DTI/
 ├── tests/               # Testes unitários (Jest)
 ├── package.json
 └── README.md
-'''
+```
 
 ---
 
